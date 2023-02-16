@@ -99,7 +99,7 @@ def main():
 
 	print(f"DFS: {dfs(graph, 'A', visited, dfs_
 
-def recur_parlin(ss,left,right)
+def recur_parlin(ss,left,right):
     if left >= right:
         return True
     else:
