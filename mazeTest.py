@@ -97,7 +97,22 @@ def main():
 	'G' : []
 	}
 
-	print(f"DFS: {dfs(graph, 'A', visited, dfs_traversal)}")
+	print(f"DFS: {dfs(graph, 'A', visited, dfs_
+
+def recur_parlin(ss,left,right)
+    if left >= right:
+        return True
+    else:
+        if ss[left] != ss[right]:
+            return False
+        else:
+            return recur_parlin(ss,left + 1, right -1)
+            
+def isPalindrome(s):
+    return recur_parlin(s,0,len(s)-1)
+    
+ggts = 'non'
+print(isPalindrome(ggts))
 
 if __name__=="__main__":
 	main()
