@@ -55,7 +55,39 @@ class List:
 			else:
 				self.head.p = None
 			del remove
+	def push_front(self, data):
+        new_node = self.Node(data, self.front)
+        if self.front:
+            self.front.prev_node = new_node
+        else:
+            self.back = new_node
+        self.front = new_node
 
+    def recur_print_forward(self, node_n, output=""):
+        if node_n is None:
+            return
+        elif node_n.next_node is None:
+            print(output + f"{node_n.data}")
+        else:
+            self.recur_print_forward(node_n.next_node, output + f"{node_n.data} -> ")
+
+    def reverse_between(self, left, right):
+        dummy = List(self.front)
+
+        leftPrev, current = dummy, self.front
+        for i in range(left - 1):
+            leftPrev, current = current, current.next_node
+        # Now cure="left", leftPrev="node before left"
+        # 2) reverse from left to right
+        prev = None
+        for i in range((right - left) + 1):
+            tmpNext = current.next_node
+            current.next_node = prev
+            prev, current = current, tmpNext
+
+        leftPrev.next_node.next_node = current
+        leftPrev.next_node = prev
+        return dummy.next_node
 
 non = List()
 
