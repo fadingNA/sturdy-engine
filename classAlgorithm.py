@@ -140,7 +140,31 @@ def closest(P, n):
     return closestUtil(P, n)
 
 
+# Prime smaller than or equal to
+# n using Sieve of Eratosthese
 
+def SieveOfEra(n):
+	"""
+	1. Create a boolen array
+	2. primt[0..n] and intitalize
+	3. all entries it as true.
+	4. A value in prime[i] will
+	   finally be false if i is not a prime, else True
+	"""
+	prime = [True for i in range(n + 1)]
+	p = 2
+	while( p * p <= n):
+		# if prime[p] is not
+		# changed, then it is a prime
+		if prime[p]:
+			for i in range( p * p , n + 1, p):
+				prime[i] = False
+		p += 1
+
+	# print all prime numbers
+	for p in range(2, n + 1):
+		if prime[p]:
+			print(p)
 printList(test_bubble)
 
 if __name__ == '__main__':
@@ -150,8 +174,11 @@ if __name__ == '__main__':
 	merge_sort(arr)
 	print("Sroted array is: ", end="\n")
 	printList(arr)
-
+	n = 20
+	print("Following are the prime numbers smaller")
+	print("then or equal to <" , n , ">")
+	SieveOfEra(n)
 	P = [Point(x=2, y=3), Point(x=12, y=30),
          Point(x=40, y=50), Point(x=5, y=1), Point(x=12, y=10), Point(x=3, y=4)]
-    n = len(P)
-    print("The smallest distance is", closest(P, n))
+   # n = len(P)
+    #print("The smallest distance is", closest(P, n))
